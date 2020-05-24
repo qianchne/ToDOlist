@@ -103,6 +103,7 @@ function remove(n){
 
 // show details
 function showDetail(n){
+    //getSystemTime();
     //var data = localStorage.getItem("todoList");
     var detail = loadData();
     //alert(detail[n].detail);
@@ -112,10 +113,22 @@ function showDetail(n){
     }else{
         textDetail.innerText = 'No details';
     }
-    
-
-
 }
+
+/**  
+//  获取系统时间
+function getSystemTime(){
+    var date = new Date();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+
+    alert(day);
+}
+**/
+
 
 //保存数据
 function saveData(data){
@@ -136,6 +149,21 @@ function loadData(){
         return JSON.parse(data);
     }
 }
+
+// compare time
+function compareTime(time1, time2){
+    time1.replace(/./g, "");
+    time2.replace(/./g, "");
+    time1 = parseInt(time1);
+    time2 = parseInt(time2);
+    if((time1-time2)>0){
+        return false
+    }else{
+        return true
+    }
+
+}
+
 
 //提交表单
 function postaction(){
@@ -163,9 +191,21 @@ function postaction(){
         inputUrgent.value = importanceTable[parseInt(inputUrgent.value)];
         //alert(inputUrgent.value);
         var todo={"li":inputTodo.value,"time":inputTime.value,"urgent":inputUrgent.value,"detail":inputStuffDetail.value,"status":false};
-        //新增
         
-        data.push(todo);
+        //确定插入位置
+        //inputTime.value.replace(/./g, "");
+        //inputTime.value = parseInt(inputTime); 
+        for(var position=0;position < data.length;position++){
+            if(compareTime(inputTime.value, data[position].time)){
+                //alert(position);
+            }else{
+                break;
+            }
+        }
+        data.splice(position, 0, todo);
+
+        //新增
+        //data.push(todo);
         // console.log("push", data);
         // 保存
         saveData(data);

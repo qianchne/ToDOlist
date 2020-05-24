@@ -106,11 +106,11 @@ ul{
     border-radius: 50%;
     font-size: 13px;
     font-weight: bold;
-    color: black;
+    color: white;
     float: right;
     text-align: center;
     line-height: 18px;
-    background: #82b5b2;
+    background: black;
     /*margin-top: 20px;
     margin-bottom: 10px;*/
 }
@@ -167,11 +167,11 @@ ul{
     border-radius: 50%;
     font-size: 13px;
     font-weight: bold;
-    color: black;
+    color: white;
     float: right;
     text-align: center;
     line-height: 18px;
-    background: #82b5b2;
+    background: black;
     /*margin-top: 20px;
     margin-bottom: 10px;*/
 }
@@ -228,11 +228,11 @@ ul{
     border-radius: 50%;
     font-size: 13px;
     font-weight: bold;
-    color: black;
+    color: white;
     float: right;
     text-align: center;
     line-height: 18px;
-    background-color: tomato;
+    background-color: black;
     margin-top:6px;
 }
 .listSpan:hover{
@@ -244,11 +244,11 @@ ul{
     border-radius: 50%;
     font-size: 13px;
     font-weight: bold;
-    color: black;
+    color: white;
     float: right;
     text-align: center;
     line-height: 18px;
-    background-color: yellowgreen;
+    background-color: black;
     margin-top:6px;
     margin-right: 6px;
 }
