@@ -37,8 +37,11 @@ function showList(){
             }else{
                 // console.log(data);
                 todoList1 += "<li id='li-" + i +"'><input class='checkBox' type='checkbox' style='float:left;' onchange='change(" + i + ",false)'>" + 
-            "<input class='content' type='text' style='float:left;' id='" + i + "' value=" + data[i].li +" onchange='update(" + i + ")'>" +
-             "<span class='listSpan' style='float:right;' onclick=remove(" +i + ")>" + "-</span></li>";
+            "<input class='content' type='text' style='float:left;' id='" + i 
+                    + "' value='" + data[i].li + ' before [' + data[i].time + '],  importance is ['+ data[i].urgent + ']'
+                    + "' onchange='update(" + i + ")'>" +
+             "<span class='listSpan' style='float:right;' onclick=remove(" +i + ")>" + "-</span>" +
+             "<span class='listSpanDetail' style='float:right;' onclick=showDetail(" +i + ")>" + "D</span></li>";
             count1++;
             // todoCount= Number(todoCount.innerText);
             
@@ -98,6 +101,22 @@ function remove(n){
     showList();
 }
 
+// show details
+function showDetail(n){
+    //var data = localStorage.getItem("todoList");
+    var detail = loadData();
+    //alert(detail[n].detail);
+    var textDetail = document.getElementById("inputStuffDetail");
+    if (detail[n].detail){
+        textDetail.innerText = detail[n].detail;
+    }else{
+        textDetail.innerText = 'No details';
+    }
+    
+
+
+}
+
 //保存数据
 function saveData(data){
     data = JSON.stringify(data);
@@ -120,15 +139,18 @@ function loadData(){
 
 //提交表单
 function postaction(){
+    var importanceTable = ['error','♥','♥♥','♥♥♥','♥♥♥♥','♥♥♥♥♥'];
+    //var importanceTable = ['1','2','3','4','5'];
     // localStorage.clear();
     var inputStuffDetail = document.getElementById("inputStuffDetail");
-    document.getElementById("inputStuffDetail").value = "";
+    //alert(inputStuffDetail.value);
+    //document.getElementById("inputStuffDetail").value = "";
     var inputTodo = document.getElementById("inputTodo");
     var inputTime = document.getElementById("inputTime");
     var inputUrgent = document.getElementById("inputUrgent");
     if(inputTodo.value == "" || inputTime.value == "") {
         alert("内容不能为空");
-    }else if(inputUregnt.value == ""){
+    }else if(inputUrgent.value == ""){
         alert("内容不能为空");    
     }
     // 这边怎么简化判断呢？
@@ -137,8 +159,12 @@ function postaction(){
         var data=loadData();
         // console.log(data);
         // console.log(typeof data);
-        var todo={"li":inputTodo.value,"time":inputTime.value,"urgent":inputUregnt,"detail":inputStuffDetail,"status":false};
+        
+        inputUrgent.value = importanceTable[parseInt(inputUrgent.value)];
+        //alert(inputUrgent.value);
+        var todo={"li":inputTodo.value,"time":inputTime.value,"urgent":inputUrgent.value,"detail":inputStuffDetail.value,"status":false};
         //新增
+        
         data.push(todo);
         // console.log("push", data);
         // 保存

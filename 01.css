@@ -56,9 +56,9 @@ ul{
 
 #inputTime{
     margin-left: 150px;
-    width: 100px;
+    width: 300px;
 }
-#inputUregnt{
+#inputUrgent{
     margin-left: 150px;
     width: 100px;
 }
@@ -70,6 +70,7 @@ ul{
     margin-right: 16%;
     height: 120px;
     width: 500px;
+    font-size: 18px;
 }
 
 /*todo list*/
@@ -231,10 +232,27 @@ ul{
     float: right;
     text-align: center;
     line-height: 18px;
-    background: #82b5b2;
+    background-color: tomato;
     margin-top:6px;
 }
 .listSpan:hover{
+    cursor:pointer;
+}
+.listSpanDetail{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: bold;
+    color: black;
+    float: right;
+    text-align: center;
+    line-height: 18px;
+    background-color: yellowgreen;
+    margin-top:6px;
+    margin-right: 6px;
+}
+.listSpanDetail:hover{
     cursor:pointer;
 }
 .checkBox{

@@ -5,6 +5,8 @@
     <title>Todolist</title>
     <link rel="stylesheet" type="text/css" href="01.css">
 </head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="01.js"></script>
 <body>
     <div class="container">
 
@@ -18,9 +20,9 @@
                     <br>
                     <input type="text" id="inputTime" placeholder="  Deadline"></input>
                     <br>
-                    <input type="text" id="inputUregnt" placeholder="  importance"></input>
+                    <input type="text" id="inputUrgent" placeholder="  importance" onkeyup="value=value.replace(/[^1-5]/g,'')"></input>
+                    <!-- 正则需要限定字数-->
                     <input type="submit" value= submit id="submitPutton"></input>
-                    
                 </form>
             </div>
         </div>
@@ -67,7 +69,5 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="01.js"></script>
 
 </html>
