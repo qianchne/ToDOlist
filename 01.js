@@ -158,10 +158,6 @@ function loadData(){
 
 // compare time
 function compareTime(time1, time2){
-    time1.replace(/./g, "");
-    time2.replace(/./g, "");
-    time1 = parseInt(time1);
-    time2 = parseInt(time2);
     if((time1-time2)>0){
         return false
     }else{
@@ -197,17 +193,25 @@ function postaction(){
         var todo={"li":inputTodo.value,"time":inputTime.value,"urgent":inputUrgent.value,"detail":inputStuffDetail.value,"status":false};
         
         // make sure position where new todo could insert in
+        var time1 = inputTime.value;
+        var timestring1 = time1.replace(/\./g, ""); 
+        var timeInt1 = parseInt(timestring1);
+        //alert(timeInt1);
+
         for(var position=0;position < data.length;position++){
-            if(compareTime(inputTime.value, data[position].time)){
+            var time2 = data[position].time;
+            var timestring2 = time2.replace(/\./g, ""); 
+            var timeInt2 = parseInt(timestring2);
+            if(compareTime(timeInt1, timeInt2)){
                 //alert(position);
             }else{
                 break;
             }
         }
         // xx represent this todo has no time limitation
-        if (inputTime.value == "xx"){
-            position = 0;
-        }
+        //if (inputTime.value == "xx"){
+        //    position = 0;
+        //}
         data.splice(position, 0, todo);
 
         // save todolist
