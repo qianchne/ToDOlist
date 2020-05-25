@@ -1,19 +1,27 @@
-//将数据存储在浏览器localStorage  
-// 数据格式： todoList:[{"li":inputContent,"status":true/false}]
-// 打开浏览器时，从浏览器中读取数据、显示数据
-//触发post时：1、从浏览器读取数据，新增数据，将数据写回浏览器  2、在页面上新增一条内容
-//修改数据：1、从浏览器读取数据，修改数据，将数据写回浏览器  页面显示
-//删除数据:1、从浏览器读取数据，删除数据，将数据写回浏览器  页面显示
-//todo>>>>done:读取数据，修改状态为true，写回浏览器，
-//done>>>>todo：读取数据，修改状态为true，写回浏览器，  在todo里面增加一条内容
+///// data
+//save data in localStorage  
+// data format： todo:{"li":theme,"time":time,"urgent":importance,"detail":detail,"status":false};
+// todolist:[todo1, todo2, .....]
+
+///// action
+// once open the browser, load data from localstorage and show them
+// click submit buttom, activate postaction:
+// 1. read todolist from storage and copy input to todo.
+// 2. compare todo's time and time of items from todolist, make sure the position where todo can insert in
+// 3. insert to do in todlist and showlist on the screen
+// click - buttom, activate remove: read data from localstorage and delete them, refresh screen
+// click + buttom, activate showDetail: read data from localstorage and show detail in textarea
+//todo>>>>done: read data, set status false and save data. then, refresh screen.
+//done>>>>todo: read data, set status true and save data. then, refresh screen.
 
 
-//清除所有
+//clear all todos
 function clear(){
     localStorage.clear();
     showList();
 }
-//浏览器页面显示列表
+
+// show todolist on the screen by add li dynamically
 function showList(){
     var todoList = document.getElementById("todoList");
     var doneList = document.getElementById("doneList");
@@ -41,10 +49,8 @@ function showList(){
                     + "' value='" + data[i].li + ' before [' + data[i].time + '],  importance is ['+ data[i].urgent + ']'
                     + "' onchange='update(" + i + ")'>" +
              "<span class='listSpan' style='float:right;' onclick=remove(" +i + ")>" + "-</span>" +
-             "<span class='listSpanDetail' style='float:right;' onclick=showDetail(" +i + ")>" + "D</span></li>";
+             "<span class='listSpanDetail' style='float:right;' onclick=showDetail(" +i + ")>" + "+</span></li>";
             count1++;
-            // todoCount= Number(todoCount.innerText);
-            
             }
         }
         todoList.innerHTML = todoList1;
@@ -83,7 +89,7 @@ function change(id,val){
     }
 }
 
-//编辑
+// edit todo on the screen directly
 function update(id){
     var data = loadData();
     var newItem = document.getElementById(new String(id));  //被修改的数据
@@ -93,7 +99,7 @@ function update(id){
     saveData(data);
 }
 
-//删除
+// delete todo
 function remove(n){
     var data = loadData();
     data.splice(n,1);
@@ -130,13 +136,13 @@ function getSystemTime(){
 **/
 
 
-//保存数据
+// save data to localstorage
 function saveData(data){
     data = JSON.stringify(data);
     localStorage.setItem("todoList", data);
     // console.log("sava",JSON.parse(localStorage.getItem("todoList")));
 }
-//读取数据
+// read data from localstorage
 function loadData(){    
     var data = localStorage.getItem("todoList");
     var emptyArray = [];
@@ -165,7 +171,7 @@ function compareTime(time1, time2){
 }
 
 
-//提交表单
+// submit form
 function postaction(){
     var importanceTable = ['error','♥','♥♥','♥♥♥','♥♥♥♥','♥♥♥♥♥'];
     //var importanceTable = ['1','2','3','4','5'];
@@ -176,25 +182,21 @@ function postaction(){
     var inputTodo = document.getElementById("inputTodo");
     var inputTime = document.getElementById("inputTime");
     var inputUrgent = document.getElementById("inputUrgent");
-    if(inputTodo.value == "" || inputTime.value == "") {
+    if(inputTodo.value == "" || inputTime.value == ""||inputUrgent.value == "") {
         alert("内容不能为空");
-    }else if(inputUrgent.value == ""){
-        alert("内容不能为空");    
     }
-    // 这边怎么简化判断呢？
     else{
-        //读取数据
+        // load todolist from localstorage
         var data=loadData();
         // console.log(data);
         // console.log(typeof data);
         
+        // change importance([1-5]) to ♥
         inputUrgent.value = importanceTable[parseInt(inputUrgent.value)];
         //alert(inputUrgent.value);
         var todo={"li":inputTodo.value,"time":inputTime.value,"urgent":inputUrgent.value,"detail":inputStuffDetail.value,"status":false};
         
-        //确定插入位置
-        //inputTime.value.replace(/./g, "");
-        //inputTime.value = parseInt(inputTime); 
+        // make sure position where new todo could insert in
         for(var position=0;position < data.length;position++){
             if(compareTime(inputTime.value, data[position].time)){
                 //alert(position);
@@ -202,16 +204,17 @@ function postaction(){
                 break;
             }
         }
+        // xx represent this todo has no time limitation
+        if (inputTime.value == "xx"){
+            position = 0;
+        }
         data.splice(position, 0, todo);
 
-        //新增
-        //data.push(todo);
-        // console.log("push", data);
-        // 保存
+        // save todolist
         saveData(data);
         var form=document.getElementById("form");
         form.reset();
-        //页面新增数据
+        // refresh screen
         showList();
     }
 }

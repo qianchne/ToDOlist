@@ -28,7 +28,7 @@ ul{
 .topNav h3{
 
     margin-top: 1%;
-    margin-left: 20%;
+    margin-left: 26%;
     margin-bottom: 1%;
     width:20%;
 }
@@ -47,29 +47,29 @@ ul{
     margin: 5px;
 }
 #inputTodo{
-    margin-left: 150px;
-    width: 300px;
+    margin-left: 20%;
+    width: 25%;
     height: 30px;
 
 
 }
 
 #inputTime{
-    margin-left: 150px;
-    width: 300px;
+    margin-left: 20%;
+    width: 25%;
 }
 #inputUrgent{
-    margin-left: 150px;
-    width: 100px;
+    margin-left: 20%;
+    width: 12%;
 }
 #submitPutton{
-    margin-left: 100px;
+    margin-left: 2%;
 }
 #inputStuffDetail{
     float: right;
     margin-right: 16%;
     height: 120px;
-    width: 500px;
+    width: 35%;
     font-size: 18px;
 }
 
@@ -79,13 +79,13 @@ ul{
     height: 100%;
 }
 .lists{
-    width: 600px;
+    width: 80%;
     height: 100%;
     padding: 20px 0 10px 0;
     margin:auto;
 }
 .todoNav{
-    width: 600px;
+    width: 100%;
     height: 30px;
 }
 .title1{
@@ -115,21 +115,21 @@ ul{
     margin-bottom: 10px;*/
 }
 .todoList{
-    width: 600px;
+    width: 100%;
 }
 .todoList ul{
-    width: 600px;
+    width: 100%;
     margin:auto;
 }
 .todoList li{
-    width: 587px;
+    width: 100%;
     height: 30px;
     padding:0 5px;
     margin:5px 0;
     background: white;
     line-height:30px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
     border-left:3px solid #0b423e;
 }
 
@@ -140,13 +140,13 @@ ul{
     height: 100%;
 }
 .lists1{
-    width: 600px;
+    width: 80%;
     height: 100%;
     padding: 20px 0 10px 0;
     margin:auto;
 }
 .doneNav{
-    width: 600px;
+    width: 100%;
     height: 30px;
 }
 .title2{
@@ -176,7 +176,7 @@ ul{
     margin-bottom: 10px;*/
 }
 .doneList{
-    width: 600px;
+    width: 100%;
 }
 .doneList ul{
     width: 600px;
@@ -189,8 +189,8 @@ ul{
     margin:5px 0;
     background: white;
     line-height:30px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
     border-left:3px solid #0b423e;
 }
 
@@ -211,7 +211,7 @@ ul{
 
 
 .content{
-    width: 500px;
+    width: 90%;
     height: 27px;
     color: black;
     font-size: 15px;
@@ -226,12 +226,12 @@ ul{
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 30px;
+    font-weight: lighter;
     color: white;
     float: right;
     text-align: center;
-    line-height: 18px;
+    line-height: 13px;
     background-color: black;
     margin-top:6px;
 }
@@ -242,7 +242,7 @@ ul{
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    font-size: 13px;
+    font-size: 20px;
     font-weight: bold;
     color: white;
     float: right;

@@ -1,3 +1,8 @@
+<!--
+chan 2020/05/25
+this is an simple ToDOlist according to 4 Quadrants Time Management Strategies
+    
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +21,11 @@
                 <h3>Add new stuff</h3>
                 <form id="form" action='javascript:postaction()' method='post'>
                     <input type="text" name="todoList" id="inputTodo" placeholder="  Theme" required="required" autocomplete="off">  
-                    <textarea cols="30" rows="10" id="inputStuffDetail"></textarea>
+                    <textarea cols="30" rows="10" id="inputStuffDetail" placeholder="   specific description"></textarea>
                     <br>
-                    <input type="text" id="inputTime" placeholder="  Deadline"></input>
+                    <input type="text" id="inputTime" placeholder="  Deadline: mouth.day.hour"></input>
                     <br>
-                    <input type="text" id="inputUrgent" placeholder="  importance" onkeyup="value=value.replace(/[^1-5]/g,'')"></input>
+                    <input type="text" id="inputUrgent" placeholder="  importance: [1-5]" onkeyup="value=value.replace(/[^1-5]/g,'')"></input>
                     <!-- 正则需要限定字数-->
                     <input type="submit" value= submit id="submitPutton"></input>
                 </form>
@@ -33,12 +38,12 @@
         <div class="todo">
             <div class="lists">
                 <div class="todoNav" id="todoNav">
-                    <span class="title1">正在进行</span>
+                    <span class="title1">ToDo List</span>
                     <span class="todoCount" id="todoCount">0</span>
                 </div>
                 <div class="todoList">
                     <ul id="todoList">
-                        <!-- 动态添加li -->
+                        <!-- add li controled by 01.js -->
                         <!-- <li><input type="checkbox" name="" checked="checked">事项内容<span>-</span></li> -->
                     </ul>
                 </div>
@@ -49,12 +54,12 @@
         <div class="done">
             <div class="lists1">
                 <div class="doneNav">
-                    <span class="title2">已经完成</span>
+                    <span class="title2">Down List</span>
                     <span class="doneCount" id="doneCount">0</span>
                 </div>
                 <div class="doneList">
                     <ul id="doneList">
-                        <!-- 动态添加li -->
+                        <!-- add li controled by 01.js -->
                         <!-- <li>3hsjhdjshdjhdjskas</li> -->
                     </ul>
                 </div>
@@ -64,7 +69,7 @@
         <!-- site foot -->
         <div class="siteFoot">
             <div class="foot">
-                <p>Copyright © 2014 todolist.cn <a style="color: #8c9796;" href="javascript:clear()">clear</a></p>
+                <p>All work and no play makes Jack a dull boy. So <a style="color: #8c9796;" href="javascript:clear()">CLEAR ALL</a></p>
             </div>
         </div>
     </div>
